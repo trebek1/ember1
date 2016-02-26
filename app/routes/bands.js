@@ -1,15 +1,17 @@
 // app/routes/bands.js
 import Ember from 'ember';
+import Band from '../models/band';
+import Song from '../models/song';
 
 var Band = Ember.Object.extend({
   name: '',
   slug: Ember.computed('name', function() {
     return this.get('name').dasherize();
   }),
-  site: Ember.computed('slug', 'language', function() {
-    	console.log('Recomputing site');
-    return 'http://bands.com/' + this.get('slug') + '.' + this.get('language');
-  })
+  // site: Ember.computed('slug', 'language', function() {
+  //   	console.log('Recomputing site');
+  //   return 'http://bands.com/' + this.get('slug') + '.' + this.get('language');
+  // })
 });
 
 var Song = Ember.Object.extend({
