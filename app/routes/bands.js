@@ -3,22 +3,23 @@ import Ember from 'ember';
 import Band from '../models/band';
 import Song from '../models/song';
 
-var Band = Ember.Object.extend({
-  name: '',
-  slug: Ember.computed('name', function() {
-    return this.get('name').dasherize();
-  }),
+// Moved into Models (above); 
+// var Band = Ember.Object.extend({
+//   name: '',
+//   slug: Ember.computed('name', function() {
+//     return this.get('name').dasherize();
+//   }),
   // site: Ember.computed('slug', 'language', function() {
   //   	console.log('Recomputing site');
   //   return 'http://bands.com/' + this.get('slug') + '.' + this.get('language');
   // })
-});
+// });
 
-var Song = Ember.Object.extend({
-  title: '',
-  rating: 0,
-  band: ''
-});
+// var Song = Ember.Object.extend({
+//   title: '',
+//   rating: 0,
+//   band: ''
+// });
 
 var blackDog = Song.create({
   title: 'Black Dog',
@@ -60,5 +61,13 @@ bands.get('content').pushObjects([ledZeppelin, pearlJam, fooFighters]);
 export default Ember.Route.extend({
   model: function() {
     return bands;
+  },
+   actions: {
+    createBand: function() {
+      var name = this.get('controller').get('name');
+      var band = Band.create({ name: name });
+      bands.get('content').pushObject(band);
+      this.get('controller').set('name', '');
+    }
   }
 });
