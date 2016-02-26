@@ -1,7 +1,8 @@
+// app/routes/bands.js
 import Ember from 'ember';
 
 var Band = Ember.Object.extend({
-	name: ' ',
+  name: '',
 });
 
 var ledZeppelin = Band.create({ name: 'Led Zeppelin' });
