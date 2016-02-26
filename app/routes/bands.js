@@ -48,9 +48,9 @@ var BandsCollection = Ember.Object.extend({
   sortedContent: Ember.computed.sort('content', 'sortProperties'),
 });
 
-var ledZeppelin = Band.create({ name: 'Led Zeppelin' });
-var pearlJam = Band.create({ name: 'Pearl Jam' });
-var fooFighters = Band.create({ name: 'Foo Fighters' });
+var ledZeppelin = Band.create({ name: 'Led Zeppelin', songs: [blackDog] });
+var pearlJam = Band.create({ name: 'Pearl Jam', songs: [daughter, yellowLedbetter] });
+var fooFighters = Band.create({ name: 'Foo Fighters', songs: [pretender] });
 
 var bands = BandsCollection.create();
 bands.get('content').pushObjects([ledZeppelin, pearlJam, fooFighters]);
